@@ -17,7 +17,10 @@ class App extends Component {
       query: '',
       runtime: '',
       ratings: [],
-      url: 'http://www.omdbapi.com/?t='
+      url: 'http://www.omdbapi.com/?t=',
+      isClicked: false,
+      display: 'none'
+
     }
   }
 
@@ -28,6 +31,10 @@ class App extends Component {
   }
 
   handleClick(e) {
+    this.setState({
+      isClicked: true,
+      display: 'flex'
+    })
     axios.get(`${this.state.url}${this.state.query}`)
       .then((res) => {
         this.setState({
@@ -38,7 +45,8 @@ class App extends Component {
           genre: res.data.Genre,
           rated: res.data.Rated,
           year: res.data.Year,
-          ratings: res.data.Ratings
+          ratings: res.data.Ratings,
+          query:  ''
         })
         console.log(res.data);
       })
@@ -48,6 +56,10 @@ class App extends Component {
   }
 
   render() {
+    const styles = {
+      display: this.state.display
+    }
+
     return (
       <div className="container">
         <div className="user-input">
@@ -55,21 +67,20 @@ class App extends Component {
           <input type="submit" name = "Send" onClick= {this.handleClick.bind(this)} />
           <h1>Brians Movies</h1>
         </div>
-        <div className="content-container">
-          <div className="poster-container">
-            <h1 className="title">{this.state.title}</h1>
-             {this.state.poster ?  <img src={this.state.poster} alt="poster" / >  : ''}
-          </div>
-          <div className="description-container">
-            <p className="description">{this.state.description}</p>
-            <p className="genre">{this.state.genre}</p>
-            <p className="rated">{this.state.rated}</p>
-            <p className="yearReleased">{this.state.year}</p>
-            <p className="runtime">{this.state.runtime}</p>
-            </div>
-          </div>
+         <div style={styles} className="content-container">
+           <div className="poster-container">
+             <h1 className="title">{this.state.title}</h1>
+              {this.state.poster ?  <img src={this.state.poster} alt="poster" / >  : ''}
+           </div>
+           <div className="description-container">
+             <p className="description">Description: {this.state.description}</p>
+             <p className="genre">Genre: {this.state.genre}</p>
+             <p className="rated">Rated: {this.state.rated}</p>
+             <p className="yearReleased">Year Released: {this.state.year}</p>
+             <p className="runtime">Run Time: {this.state.runtime}</p>
+             </div>
+         </div>
         </div>
-
   );
 }
 }

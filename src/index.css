@@ -9,7 +9,7 @@ body {
 .container {
   margin-top: 20px;
   padding: 0;
-  font-family: cursive;
+  /*font-family: cursive;*/
   font-weight: 300;
   height: 100vh;
   font-size: 1.3em;
@@ -18,28 +18,42 @@ body {
 input[type="text"] {
   outline: none;
   border: none;
-  border-bottom: 1px solid #000;
+  background: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 1px solid #fff;
+  color: #fff;
   font-size: 0.8em;
-  margin-top: 3px;
   width: 400px;
+  margin-top: 25px;
 }
 
 input[type="submit"] {
-  padding: 5px 10px 9px;
-  font-size: 21px;
-  background-color: #111;
-  color: #ffffff;
-  border-radius: 100px;
-  -moz-border-radius: 100px;
-  -webkit-border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  margin-left: 30px;
-  outline: none;
+    font-family: "Lato", "Lucida Grande","Lucida Sans Unicode", Tahoma, Sans-Serif;
+    -webkit-appearance: none;
+    font-size: 1rem;
+    text-shadow: none;
+    line-height: 1.2;
+    display: inline-block;
+    border: 1px solid #fff;
+    outline: 0;
+    padding: 10px 16px;
+    position: relative;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+    background: none;
+    text-overflow: ellipsis;
+    text-decoration: none !important;
+    cursor: pointer;
+    text-align: center;
+    font-weight: normal !important;
+    margin-left: 30px;
 }
 
 .user-input {
-  margin: 0 auto;
   text-align: center;
 }
 
